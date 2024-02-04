@@ -1,0 +1,26 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2020", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@ebuy/mocks": ["libs/mocks/src/index.ts"],
+      "@ebuy/ui": ["libs/src/index.ts"],
+      "catalog/Module": ["catalog/src/remote-entry.ts"],
+      "checkout/Module": ["checkout/src/remote-entry.ts"],
+      "recommendations/Module": ["apps/recommendations/src/remote-entry.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}
