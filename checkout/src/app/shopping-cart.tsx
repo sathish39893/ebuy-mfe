@@ -4,13 +4,17 @@ import {
   TableContainer,
   Tbody,
   Td,
+  Text,
   Th,
   Thead,
   Tr,
 } from '@chakra-ui/react';
 
 export const ShoppingCart = (basketListData: any) => {
-  const { basketList } = basketListData;
+  if (!basketListData) return <Text>Unable to fetch shopping cart data</Text>;
+  
+  const { basketList } = basketListData || {};
+  
   return (
     <TableContainer>
       <Table variant="striped" size="lg">
@@ -24,14 +28,17 @@ export const ShoppingCart = (basketListData: any) => {
           </Tr>
         </Thead>
         <Tbody>
-          {basketList.map((basketItem: any) => (
-            <Tr>
-              <Td>{basketItem.title}</Td>
-              <Td>{basketItem.title}</Td>
-              <Td isNumeric>{basketItem.quantity || 0}</Td>
-              <Td isNumeric>{basketItem.price * basketItem.quantity || '-'}</Td>
-            </Tr>
-          ))}
+          {basketList.length > 0  ?
+            basketList?.map((basketItem: any) => (
+              <Tr>
+                <Td>{basketItem?.title}</Td>
+                <Td>{basketItem?.title}</Td>
+                <Td isNumeric>{basketItem?.quantity || 0}</Td>
+                <Td isNumeric>
+                  {basketItem?.price * (basketItem?.quantity || 0) || '-'}
+                </Td>
+              </Tr>
+            )): <Tr><Td>No Data found</Td></Tr>}
         </Tbody>
       </Table>
     </TableContainer>

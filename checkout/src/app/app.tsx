@@ -1,13 +1,15 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { ChakraProvider, Container, Heading } from '@chakra-ui/react';
-import React from 'react';
+import { ChakraProvider, Container, Heading, Stack, theme } from '@chakra-ui/react';
+import { ShoppingCart } from './shopping-cart';
+import { PRODUCT_LIST_MOCKS } from '@ebuy/mocks';
+
 
 export function App() {
   return (
-    <ChakraProvider>
-      <div>
+    <ChakraProvider theme={theme}>
+      <Stack>
         <Container><Heading> Checkout </Heading></Container>
-      </div>
+        <ShoppingCart basketList={PRODUCT_LIST_MOCKS} />
+      </Stack>
     </ChakraProvider>
   );
 }
