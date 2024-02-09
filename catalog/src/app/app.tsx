@@ -1,4 +1,4 @@
-import { ChakraProvider, Container, Heading, theme } from '@chakra-ui/react';
+import { ChakraProvider, Flex, Heading, theme } from '@chakra-ui/react';
 import ProductList from './product-list';
 import React from 'react';
 
@@ -8,7 +8,9 @@ export function App() {
   return (
     <ChakraProvider theme={theme}>
       <div>
-        <Container><Heading> Catalog </Heading></Container>
+        <Flex p="2">
+          <Heading>Catalog</Heading>
+        </Flex>
         <ProductList />
         <Recommendations />
       </div>

@@ -1,5 +1,4 @@
 import {
-  Button,
   ButtonGroup,
   Card,
   CardBody,
@@ -8,7 +7,11 @@ import {
   Heading,
   Stack,
   Text,
+  Icon,
+  IconButton,
+  Button,
 } from '@chakra-ui/react';
+import { MdAdd, MdRemove } from 'react-icons/md';
 
 export const ProductCard = (productData: any) => {
   const { product } = productData;
@@ -18,23 +21,19 @@ export const ProductCard = (productData: any) => {
         <Stack mt="6" spacing="3">
           <Heading size="md">{product.title}</Heading>
           <Text>{product.description}</Text>
-          <Text color="blue.600" fontSize="2xl">
-            {product.price}
+          <Text color="blue.500" fontSize="xl">
+            ${product.price}
           </Text>
         </Stack>
       </CardBody>
-      <Divider />
+      <Divider  color="blue.600" />
       <CardFooter>
         <ButtonGroup spacing="2">
-          <Button variant="ghost" colorScheme="red">
-            Remove
-          </Button>
+          <IconButton aria-label="remove" icon={<MdAdd />} color="red.500" />
           <Button variant="ghost" colorScheme="blue">
             {0}
           </Button>
-          <Button variant="solid" colorScheme="teal">
-            Add
-          </Button>
+          <IconButton aria-label="remove" icon={<MdRemove />} color="green.600" />
         </ButtonGroup>
       </CardFooter>
     </Card>

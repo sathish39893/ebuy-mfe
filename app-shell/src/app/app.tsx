@@ -1,22 +1,45 @@
 import * as React from 'react';
 
 import { Route, Routes } from 'react-router-dom';
-import { Button, ChakraProvider, Container, Heading, theme } from '@chakra-ui/react';
+import {
+  ChakraProvider,
+  Container,
+  Heading,
+  IconButton,
+  theme,
+  Text,
+  Flex,
+  Icon,
+} from '@chakra-ui/react';
 import { Header } from '@ebuy/ui';
 import useLikeStore from 'store/Module';
+import { FcLike } from 'react-icons/fc';
 
 const Catalog = React.lazy(() => import('catalog/Module'));
 const Checkout = React.lazy(() => import('checkout/Module'));
 
-const Home = () => (<Container> <Heading> Home </Heading></Container>)
+const Home = () => (
+  <Flex p="2">
+    <Heading>Home</Heading>
+  </Flex>
+);
 
 export function App() {
   const { count, increment } = useLikeStore();
   return (
     <ChakraProvider theme={theme}>
-      <React.Suspense fallback={null}>
+      <React.Suspense fallback={<Text>Error Occured</Text>}>
         <Header />
-        <Button onClick={increment}>{count} Likes</Button>
+        <Flex minWidth="max-content" alignItems="center" gap="4" p="2">
+          <Icon
+            cursor="pointer"
+            as={FcLike}
+            boxSize={6}
+            color="pink.500"
+            onClick={increment}
+          />
+          <Text>{count} Likes</Text>
+        </Flex>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/catalog" element={<Catalog />} />

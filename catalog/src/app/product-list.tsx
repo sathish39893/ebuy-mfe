@@ -5,6 +5,7 @@ export function ProductList() {
   return (
     <SimpleGrid
       spacing={4}
+      p="2"
       templateColumns="repeat(auto-fill, minmax(250px, 1fr))"
     >
       {PRODUCT_LIST_MOCKS.map((product) => (
