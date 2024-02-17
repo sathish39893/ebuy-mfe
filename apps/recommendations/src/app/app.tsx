@@ -10,7 +10,7 @@ import {
   Text,
   theme,
 } from '@chakra-ui/react';
-import useLikeStore from 'store/Module';
+import { useLikeStore } from 'store/Module';
 
 export function App() {
   const { reset, count } = useLikeStore();

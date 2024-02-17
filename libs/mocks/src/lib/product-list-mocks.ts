@@ -1,8 +1,9 @@
-interface productListItem {
+export interface productListItem {
     id: string;
     title: string;
     image: string;
     price: number;
+    description?: string;
   }
   export const PRODUCT_LIST_MOCKS: Array<productListItem> = [
     {

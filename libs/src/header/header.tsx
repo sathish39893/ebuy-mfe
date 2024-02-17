@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
-import { Box, Button, Flex, Icon, Spacer } from '@chakra-ui/react';
+import { Box, Button, Flex, Icon, Spacer, Text } from '@chakra-ui/react';
 import { MdOutlineShoppingCart } from 'react-icons/md';
 
-/* eslint-disable-next-line */
-export interface HeaderProps {}
+export interface HeaderProps {
+  cartItemsCount: number;
+}
 
 interface NavItem {
   href: string;
@@ -40,6 +41,7 @@ export function Header(props: HeaderProps) {
         </Flex>
       </Box>
       <Spacer />
+      <Text as='sub' color='tomato'>{props.cartItemsCount}</Text>
       <Icon as={MdOutlineShoppingCart} w={8} h={8} color="teal.500"></Icon>
     </Flex>
   );

@@ -9,7 +9,7 @@ export function App() {
     <ChakraProvider theme={theme}>
       <div>
         <Flex p="2">
-          <Heading>Catalog</Heading>
+          <Heading>Product Catalog</Heading>
         </Flex>
         <ProductList />
         <Recommendations />
