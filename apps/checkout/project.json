@@ -1,7 +1,7 @@
 {
   "name": "checkout",
   "$schema": "../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "checkout/src",
+  "sourceRoot": "apps/checkout/src",
   "projectType": "application",
   "targets": {
     "build": {
@@ -11,14 +11,14 @@
       "options": {
         "compiler": "babel",
         "outputPath": "dist/checkout",
-        "index": "checkout/src/index.html",
+        "index": "apps/checkout/src/index.html",
         "baseHref": "/",
-        "main": "checkout/src/main.ts",
-        "tsConfig": "checkout/tsconfig.app.json",
-        "assets": ["checkout/src/favicon.ico", "checkout/src/assets"],
-        "styles": ["checkout/src/styles.css"],
+        "main": "apps/checkout/src/main.ts",
+        "tsConfig": "apps/checkout/tsconfig.app.json",
+        "assets": ["apps/checkout/src/favicon.ico", "apps/checkout/src/assets"],
+        "styles": ["apps/checkout/src/styles.css"],
         "scripts": [],
-        "webpackConfig": "checkout/webpack.config.ts"
+        "webpackConfig": "apps/checkout/webpack.config.ts"
       },
       "configurations": {
         "development": {
@@ -30,8 +30,8 @@
         "production": {
           "fileReplacements": [
             {
-              "replace": "checkout/src/environments/environment.ts",
-              "with": "checkout/src/environments/environment.prod.ts"
+              "replace": "apps/checkout/src/environments/environment.ts",
+              "with": "apps/checkout/src/environments/environment.prod.ts"
             }
           ],
           "optimization": true,
@@ -40,7 +40,7 @@
           "namedChunks": false,
           "extractLicenses": true,
           "vendorChunk": false,
-          "webpackConfig": "checkout/webpack.config.prod.ts"
+          "webpackConfig": "apps/checkout/webpack.config.prod.ts"
         }
       }
     },
@@ -86,7 +86,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "checkout/jest.config.ts"
+        "jestConfig": "apps/checkout/jest.config.ts"
       }
     }
   },

@@ -17,10 +17,10 @@
     "paths": {
       "@ebuy/mocks": ["libs/mocks/src/index.ts"],
       "@ebuy/ui": ["libs/src/index.ts"],
-      "catalog/Module": ["catalog/src/remote-entry.ts"],
-      "checkout/Module": ["checkout/src/remote-entry.ts"],
+      "catalog/Module": ["apps/catalog/src/remote-entry.ts"],
+      "checkout/Module": ["apps/checkout/src/remote-entry.ts"],
       "recommendations/Module": ["apps/recommendations/src/remote-entry.ts"],
-      "store/Module": ["store/src/remote-entry.ts"]
+      "store/Module": ["apps/store/src/remote-entry.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

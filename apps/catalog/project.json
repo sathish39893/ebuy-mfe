@@ -1,7 +1,7 @@
 {
-  "name": "app-shell",
+  "name": "catalog",
   "$schema": "../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "app-shell/src",
+  "sourceRoot": "apps/catalog/src",
   "projectType": "application",
   "targets": {
     "build": {
@@ -10,15 +10,15 @@
       "defaultConfiguration": "production",
       "options": {
         "compiler": "babel",
-        "outputPath": "dist/app-shell",
-        "index": "app-shell/src/index.html",
+        "outputPath": "dist/catalog",
+        "index": "apps/catalog/src/index.html",
         "baseHref": "/",
-        "main": "app-shell/src/main.ts",
-        "tsConfig": "app-shell/tsconfig.app.json",
-        "assets": ["app-shell/src/favicon.ico", "app-shell/src/assets"],
-        "styles": ["app-shell/src/styles.css"],
+        "main": "apps/catalog/src/main.ts",
+        "tsConfig": "apps/catalog/tsconfig.app.json",
+        "assets": ["apps/catalog/src/favicon.ico", "apps/catalog/src/assets"],
+        "styles": ["apps/catalog/src/styles.css"],
         "scripts": [],
-        "webpackConfig": "app-shell/webpack.config.ts"
+        "webpackConfig": "apps/catalog/webpack.config.ts"
       },
       "configurations": {
         "development": {
@@ -30,8 +30,8 @@
         "production": {
           "fileReplacements": [
             {
-              "replace": "app-shell/src/environments/environment.ts",
-              "with": "app-shell/src/environments/environment.prod.ts"
+              "replace": "apps/catalog/src/environments/environment.ts",
+              "with": "apps/catalog/src/environments/environment.prod.ts"
             }
           ],
           "optimization": true,
@@ -40,7 +40,7 @@
           "namedChunks": false,
           "extractLicenses": true,
           "vendorChunk": false,
-          "webpackConfig": "app-shell/webpack.config.prod.ts"
+          "webpackConfig": "apps/catalog/webpack.config.prod.ts"
         }
       }
     },
@@ -48,16 +48,16 @@
       "executor": "@nx/react:module-federation-dev-server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "app-shell:build",
+        "buildTarget": "catalog:build",
         "hmr": true,
-        "port": 4200
+        "port": 4201
       },
       "configurations": {
         "development": {
-          "buildTarget": "app-shell:build:development"
+          "buildTarget": "catalog:build:development"
         },
         "production": {
-          "buildTarget": "app-shell:build:production",
+          "buildTarget": "catalog:build:production",
           "hmr": false
         }
       }
@@ -69,16 +69,16 @@
       "executor": "@nx/web:file-server",
       "defaultConfiguration": "production",
       "options": {
-        "buildTarget": "app-shell:build",
+        "buildTarget": "catalog:build",
         "watch": false,
-        "port": 4200
+        "port": 4201
       },
       "configurations": {
         "development": {
-          "buildTarget": "app-shell:build:development"
+          "buildTarget": "catalog:build:development"
         },
         "production": {
-          "buildTarget": "app-shell:build:production"
+          "buildTarget": "catalog:build:production"
         }
       }
     },
@@ -86,7 +86,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "app-shell/jest.config.ts"
+        "jestConfig": "apps/catalog/jest.config.ts"
       }
     }
   },
