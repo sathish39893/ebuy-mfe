@@ -10,28 +10,33 @@ import {
   Text,
   theme,
 } from '@chakra-ui/react';
-import { useLikeStore } from 'store/Module';
+import { useContext } from 'react';
+import { LikeContext } from 'store/Module';
+import { LikeContextProvider } from 'store/Module';
 
 export function App() {
-  const { reset, count } = useLikeStore();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const { likes, setLikes } = useContext<any>(LikeContext);
   return (
     <ChakraProvider theme={theme}>
-      <Card maxW="lg" size="md">
-        <CardHeader>
-          <Heading size="md">Recommendations</Heading>
-        </CardHeader>
-        <CardBody>
-          <Stack mt="6" spacing="3">
-            <Text as="h4">Recommendation goes here</Text>
-            <Text as="p"> {count} people liked the recommendations</Text>
-          </Stack>
-        </CardBody>
-        <CardFooter>
-          <Button onClick={reset} colorScheme="blue">
-            Reset
-          </Button>
-        </CardFooter>
-      </Card>
+      <LikeContextProvider>
+        <Card maxW="lg" size="md">
+          <CardHeader>
+            <Heading size="md">Recommendations</Heading>
+          </CardHeader>
+          <CardBody>
+            <Stack mt="6" spacing="3">
+              <Text as="h4">Recommendation goes here</Text>
+              <Text as="p"> {likes} people liked the recommendations</Text>
+            </Stack>
+          </CardBody>
+          <CardFooter>
+            <Button onClick={() => setLikes(0)} colorScheme="blue">
+              Reset
+            </Button>
+          </CardFooter>
+        </Card>
+      </LikeContextProvider>
     </ChakraProvider>
   );
 }

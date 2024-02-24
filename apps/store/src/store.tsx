@@ -1,4 +1,5 @@
 import { productListItem } from '@ebuy/mocks';
+import { createContext, useState } from 'react';
 import { create } from 'zustand';
 
 export interface LikeCount {
@@ -25,6 +26,19 @@ export const useLikeStore = create<LikeCount>((set) => ({
   increment: () => set((state) => ({ count: state.count + 1 })),
   reset: () => set(() => ({ count: 0 })),
 }));
+
+export interface LikeContextProps {
+  children: JSX.Element;
+}
+export const LikeContext = createContext<Record<string, any>>({});
+export const LikeContextProvider = ({children}: LikeContextProps) => {
+  const [likes, setLikes] = useState(0);
+  return (
+    <LikeContext.Provider value={{likes, setLikes}}>
+      {children}
+    </LikeContext.Provider>
+  ) 
+}
 
 export const useShoppingCartStore = create<ShoppingCart>((set) => ({
   items: [],

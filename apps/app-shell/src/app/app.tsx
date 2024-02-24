@@ -5,14 +5,11 @@ import {
   ChakraProvider,
   Heading,
   theme,
-  Text,
   Flex,
-  Icon,
+  Progress,
 } from '@chakra-ui/react';
-import { Header } from '@ebuy/ui';
-import { useLikeStore } from 'store/Module';
-import { FcLike } from 'react-icons/fc';
-import { useShoppingCartStore } from 'store/Module';
+import { LikeContextProvider } from 'store/Module';
+import { AppHeader } from './AppHeader';
 
 const Catalog = React.lazy(() => import('catalog/Module'));
 const Checkout = React.lazy(() => import('checkout/Module'));
@@ -24,28 +21,18 @@ const Home = () => (
 );
 
 export function App() {
-  const { count, increment } = useLikeStore();
-  const { items } = useShoppingCartStore();
   return (
     <ChakraProvider theme={theme}>
-      <React.Suspense fallback={<Text>Error Occured</Text>}>
-        <Header cartItemsCount={items.length}/>
-        <Flex minWidth="max-content" alignItems="center" gap="4" p="2">
-          <Icon
-            cursor="pointer"
-            as={FcLike}
-            boxSize={6}
-            color="pink.500"
-            onClick={increment}
-          />
-          <Text>{count} Likes</Text>
-        </Flex>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/catalog" element={<Catalog />} />
-          <Route path="/checkout" element={<Checkout />} />
-        </Routes>
-      </React.Suspense>
+      <LikeContextProvider>
+        <React.Suspense fallback={<Progress size="xs" isIndeterminate />}>
+          <AppHeader />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/catalog" element={<Catalog />} />
+            <Route path="/checkout" element={<Checkout />} />
+          </Routes>
+        </React.Suspense>
+      </LikeContextProvider>
     </ChakraProvider>
   );
 }
